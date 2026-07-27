@@ -1,9 +1,14 @@
 # Controle de um motor de passo único em Python
 # Exemplo para motor de passo unipolar (4 fios) usando Raspberry Pi ou MicroPython
 
-from machine import Pin
-from time import sleep_ms
-from time import sleep
+try:
+    from machine import Pin
+    from time import sleep_ms
+    GPIO_TYPE = "micropython"
+except ImportError:
+    import RPi.GPIO as GPIO
+    from time import sleep
+    GPIO_TYPE = "raspberry"
 
 class StepperMotor:
     def __init__(self, pins):
