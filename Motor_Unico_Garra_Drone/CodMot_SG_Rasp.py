@@ -1,7 +1,6 @@
 # Controle de um motor de passo único em Python
 # Exemplo para motor de passo unipolar (4 fios) usando Raspberry Pi ou MicroPython
 
-
 import RPi.GPIO as GPIO
 from time import sleep
 #GPIO_TYPE = "raspberry"
