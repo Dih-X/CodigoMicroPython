@@ -19,7 +19,8 @@ void moverServo(byte id, int posicao){
 
 void setup() {
   Serial.begin(115200);
-  SerialArbotix.begin(57600, SERIAL_8N1, RX_PIN, TX_PIN); // Initialize UART1 with specified baud rate and pins
+  SerialArbotix.begin(57600, SERIAL_8N1, RX_PIN, TX_PIN);
+  delay(1000);
 }
 
 void loop(){
