@@ -8,7 +8,7 @@ void setup(){
 }
 
 void loop(){
-    if (Serial.available()>=3){
+    if (Serial.available() >= 3){
 
         int id = Serial.read();
         int posMSB = Serial.read();
