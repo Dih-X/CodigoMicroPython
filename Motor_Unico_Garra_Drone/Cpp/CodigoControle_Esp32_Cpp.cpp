@@ -6,8 +6,8 @@ HardwareSerial SerialArbotix(2); // Use UART1
 #define TX_PIN 17
 
 void moverServo(byte id, int posicao){
-    if(posicao<0) posicao = 0;
-    if(posicao>1023) posicao = 1023;
+    if(posicao < 0) posicao = 0;
+    if(posicao > 1023) posicao = 1023;
 
     byte posMSB = (posicao >> 8) & 0xFF;
     byte posLSB = posicao & 0xFF;
