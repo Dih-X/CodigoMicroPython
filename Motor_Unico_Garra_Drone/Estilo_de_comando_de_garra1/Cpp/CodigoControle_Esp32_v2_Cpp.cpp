@@ -32,7 +32,7 @@ void loop(){
     if (Serial.available()){                          
         comando = Serial.readStringUntil('\n');      // cmds -> atv, ret
         comando.trim();                             
-        comando.toLowerCase(); 
+        comando.toLowerCase();
 
         waitTime = millis();
 
