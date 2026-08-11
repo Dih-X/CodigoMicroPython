@@ -24,11 +24,11 @@ void setup() {
 }
 
 void loop(){
-    Serial.println("Servo para 200");
+    //Serial.println("Servo para 200");
     moverServo(1, 200);
     delay(2000);
 
-    Serial.println("Servo para 800");
+    //Serial.println("Servo para 800");
     moverServo(1, 800);
     delay(2000);
 }
