@@ -5,6 +5,8 @@ HardwareSerial SerialArbotix(2); // Use UART1
 #define RX_PIN 16
 #define TX_PIN 17
 
+String comando = "";
+
 void moverServo(byte id, int posicao){
     if(posicao < 0) posicao = 0;
     if(posicao > 1023) posicao = 1023;
@@ -24,11 +26,19 @@ void setup() {
 }
 
 void loop(){
-    //Serial.println("Servo para 200");
-    moverServo(1, 200);
-    delay(2000);
+    if (Serial.available()){                          // 'beffier' if command central script
+        comando = Serial.readStringUntil('\n');      // cmds -> atv, zr, zpi, emr, esc
+        comando.trim();                             // zu, zx, zy, zz, esczr
+        comando.toLowerCase(); 
 
-    //Serial.println("Servo para 800");
-    moverServo(1, 800);
-    delay(2000);
+        if (comando == "atv"){
+            //Serial.println("Servo para 200");
+            moverServo(1, 200);
+            delay(2000);
+        }
+
+        //Serial.println("Servo para 800");
+        moverServo(1, 800);
+        delay(2000);
+    }
 }

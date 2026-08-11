@@ -1,0 +1,14 @@
+Nesta pasta há códigos de controle de uma garra de um motor usando o drive ArbotiX
+
+ECG_Protype
+    Códigos experimentais em python
+
+ECG 1
+    Códigos oficiais
+        Códigos em python e em C++
+
+        C++
+            Códigos de comando do Esp32 em .Cpp e do drive ArbotiX
+
+        Python
+            Códigos de comando do Esp32 em .py
