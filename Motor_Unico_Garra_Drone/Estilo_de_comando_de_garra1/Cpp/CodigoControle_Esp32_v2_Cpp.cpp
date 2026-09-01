@@ -11,9 +11,11 @@ String comando = "";
 unsigned long waitTime = 0;
 
 void setup() {
-    Serial.begin(115200);
-    //SerialArbotix.begin(57600, SERIAL_8N1, RX_PIN, TX_PIN);
-    SerialArbotix.begin(115200, SERIAL_8N1, RX_PIN, TX_PIN);
+    Serial.begin(57600);
+    //Serial.begin(115200);
+
+    SerialArbotix.begin(57600, SERIAL_8N1, RX_PIN, TX_PIN);
+    //SerialArbotix.begin(115200, SERIAL_8N1, RX_PIN, TX_PIN);
 
     Serial.begin(9600);
     delay(100);
@@ -42,7 +44,7 @@ void loop(){
         if (comando == "atv"){
             if (millis() - waitTime >= 2000){
                 //Serial.println("Servo para 200");
-                moverServo(1, 200);
+                moverServo(1, 1023);
                 //delay(2000);
             }
 
@@ -50,7 +52,7 @@ void loop(){
 
             if (millis() - waitTime >= 2000){
                 //Serial.println("Servo para 800");
-                moverServo(1, 800);
+                moverServo(1, 0);
                 //delay(2000);
             }
         }

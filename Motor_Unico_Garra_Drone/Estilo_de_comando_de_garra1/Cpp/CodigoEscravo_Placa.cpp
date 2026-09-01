@@ -3,6 +3,7 @@
 #include <BioloidController.h>
 
 BioloidController bioloid = BioloidController(1000000);
+String comando = "";
 
 void setup(){
     Serial.begin(115200);
@@ -12,6 +13,8 @@ void setup(){
 void loop(){
     if (Serial.available() >= 3){
 
+        //if()
+        
         int id = Serial.read();
         int posMSB = Serial.read();
         int posLSB = Serial.read();
