@@ -46,7 +46,7 @@ void loop(){
         if (comando == "atv"){
             if (millis() - waitTime >= 2000){
                 //Serial.println("Servo para 200");
-                moverServo(1, 1023);
+                //moverServo(1, 1023);
                 //delay(2000);
             }
 
@@ -54,7 +54,7 @@ void loop(){
 
             if (millis() - waitTime >= 2000){
                 //Serial.println("Servo para 800");
-                moverServo(1, 0);
+                //moverServo(1, 0);
                 //delay(2000);
             }
         }
