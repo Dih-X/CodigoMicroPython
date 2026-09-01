@@ -11,8 +11,8 @@ String comando = "";
 unsigned long waitTime = 0;
 
 void setup() {
-    Serial.begin(57600);
-    //Serial.begin(115200);
+    //Serial.begin(57600);
+    Serial.begin(115200);
 
     SerialArbotix.begin(57600, SERIAL_8N1, RX_PIN, TX_PIN);
     //SerialArbotix.begin(115200, SERIAL_8N1, RX_PIN, TX_PIN);

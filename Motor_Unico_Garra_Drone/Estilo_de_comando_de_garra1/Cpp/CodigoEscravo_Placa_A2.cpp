@@ -12,13 +12,16 @@ void setup(){
 
 void loop(){
     if (Serial.available()){
+        comando = Serial.readStringUntil('\n');
+        comando.trim();
+        comando.toLowerCase();
 
         if(comando == "atv"){
             SetPosition (1, 1023);
         } else if (comando == "ret"){
             SetPosition (1, 0);
         }
-        
+
         /*
         int id = Serial.read();
         int posMSB = Serial.read();
@@ -26,6 +29,6 @@ void loop(){
         int posicao = (posMSB << 8) + posLSB;
         SetPosition(id, posicao);
         */
-       
+
     }
 }
