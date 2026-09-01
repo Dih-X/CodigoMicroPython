@@ -21,6 +21,7 @@ void setup() {
     delay(100);
 }
 
+/*
 void moverServo(byte id, int posicao){
     if(posicao < 0) posicao = 0;
     if(posicao > 1023) posicao = 1023;
@@ -32,6 +33,7 @@ void moverServo(byte id, int posicao){
     SerialArbotix.write(posMSB);
     SerialArbotix.write(posLSB);
 }
+*/
 
 void loop(){
     if (Serial.available()){                          
