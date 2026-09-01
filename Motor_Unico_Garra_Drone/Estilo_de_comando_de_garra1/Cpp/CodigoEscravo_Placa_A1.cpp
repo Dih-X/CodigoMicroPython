@@ -13,7 +13,11 @@ void setup(){
 void loop(){
     if (Serial.available() >= 3){
 
-        //if()
+        if(comando == "atv"){
+            SetPosition (1, 1023);
+        } else if (comando == "ret"){
+            SetPosition (1, 0);
+        }
         
         int id = Serial.read();
         int posMSB = Serial.read();
