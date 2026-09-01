@@ -1,12 +1,23 @@
 #include <HardwareSerial.h>
 
 HardwareSerial SerialArbotix(2); // Use UART1
+//#define SerialArbotix 2
+//int SerialArbotix 2;
 
 #define RX_PIN 16
 #define TX_PIN 17
 
 String comando = "";
 unsigned long waitTime = 0;
+
+void setup() {
+    Serial.begin(115200);
+    //SerialArbotix.begin(57600, SERIAL_8N1, RX_PIN, TX_PIN);
+    SerialArbotix.begin(115200, SERIAL_8N1, RX_PIN, TX_PIN);
+
+    Serial.begin(9600);
+    delay(100);
+}
 
 void moverServo(byte id, int posicao){
     if(posicao < 0) posicao = 0;
@@ -18,14 +29,6 @@ void moverServo(byte id, int posicao){
     SerialArbotix.write(id);
     SerialArbotix.write(posMSB);
     SerialArbotix.write(posLSB);
-}
-
-void setup() {
-    Serial.begin(115200);
-    SerialArbotix.begin(57600, SERIAL_8N1, RX_PIN, TX_PIN);
-
-    //Serial.begin(9600);
-    //delay(1000);
 }
 
 void loop(){
@@ -43,7 +46,7 @@ void loop(){
                 //delay(2000);
             }
 
-        }else if (comando == "ret"){
+        } else if (comando == "ret"){
 
             if (millis() - waitTime >= 2000){
                 //Serial.println("Servo para 800");
