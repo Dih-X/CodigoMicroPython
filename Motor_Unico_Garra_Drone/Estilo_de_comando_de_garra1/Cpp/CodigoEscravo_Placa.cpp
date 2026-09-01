@@ -6,6 +6,7 @@ BioloidController bioloid = BioloidController(1000000);
 
 void setup(){
     Serial.begin(115200);
+    SetPosition (1, 0);
 }
 
 void loop(){
