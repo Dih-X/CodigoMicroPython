@@ -9,6 +9,11 @@ espera = 2000
 
 tempAnterior = time.ticks_ms()
 
+#Fazer uma funcao para:
+#Comeca Fechada -> Abre totalmente
+#Fecha ate certo ponto -> Abre totalmente
+# -> Repete
+
 def mover_servo(servo_id, posicao):
     if posicao < 0:
         posicao = 0
@@ -27,11 +32,11 @@ while True:
     if comando == 1:
         #abre
         if time.ticks_diff(tempAtual, tempAnterior) >= espera:
-            mover_servo(servo_id = 1, posicao = 800)
+            mover_servo(servo_id = 1, posicao = 1023)
             tempAnterior = tempAtual
 
     elif comando == 0:  
         #fecha
         if time.ticks_diff(tempAtual, tempAnterior) >= espera:
-            mover_servo(servo_id = 1, posicao = 200)
+            mover_servo(servo_id = 1, posicao = 0)
             tempAnterior = tempAtual
