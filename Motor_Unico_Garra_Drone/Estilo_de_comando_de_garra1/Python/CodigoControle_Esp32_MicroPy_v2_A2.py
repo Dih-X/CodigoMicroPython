@@ -31,7 +31,7 @@ while True:
     tempAtual = time.ticks_ms()
 
     if comando == 1 and estadoAnterior == 0:
-        #abre
+        #abre por completo
         if time.ticks_diff(tempAtual, tempAnterior) >= espera:
             mover_servo(servo_id = 1, posicao = 1023)
             tempAnterior = tempAtual
@@ -52,7 +52,7 @@ while True:
             estadoAnterior = 0
 
     elif comando == 0 and estadoAnterior == 0:
-        #fecha
+        #fecha por completo
         if time.ticks_diff(tempAtual, tempAnterior) >= espera:
             mover_servo(servo_id = 1, posicao = 0)
             tempAnterior = tempAtual
