@@ -1,18 +1,17 @@
 import time
+import sys
+import uselect
 from machine import UART
 
-uart = UART(2, baudrate=115200, tx=17, rx=16)
+uart = UART(2, baudrate=57600, tx=17, rx=16)
 
-#comando => controla a garra, 0 = fecha, 1 = abre
-comando = 0
+comando = None
+tempo_comando = time.ticks_ms()
 espera = 2000
 
-tempAnterior = time.ticks_ms()
+entrada = uselect.poll()
+entrada.register(sys.stdin, uselect.POLLIN)
 
-#Fazer uma funcao para:
-#Comeca Fechada -> Abre totalmente
-#Fecha ate certo ponto -> Abre totalmente
-# -> Repete
 
 def mover_servo(servo_id, posicao):
     if posicao < 0:
@@ -26,17 +25,18 @@ def mover_servo(servo_id, posicao):
     pacote = bytes([servo_id, pos_msb, pos_lsb])
     uart.write(pacote)
 
+
 while True:
-    tempAtual = time.ticks_ms()
+    eventos = entrada.poll(0)
+    if eventos:
+        texto = sys.stdin.readline()
+        if texto:
+            texto = texto.strip().lower()
+            if texto in ("atv", "ret"):
+                comando = texto
+                tempo_comando = time.ticks_ms()
 
-    if comando == 1:
-        #abre
-        if time.ticks_diff(tempAtual, tempAnterior) >= espera:
-            mover_servo(servo_id = 1, posicao = 1023)
-            tempAnterior = tempAtual
-
-    elif comando == 0:  
-        #fecha
-        if time.ticks_diff(tempAtual, tempAnterior) >= espera:
-            mover_servo(servo_id = 1, posicao = 0)
-            tempAnterior = tempAtual
+    if comando is not None and time.ticks_diff(time.ticks_ms(), tempo_comando) >= espera:
+        posicao = 1023 if comando == "atv" else 0
+        mover_servo(servo_id=1, posicao=posicao)
+        comando = None
