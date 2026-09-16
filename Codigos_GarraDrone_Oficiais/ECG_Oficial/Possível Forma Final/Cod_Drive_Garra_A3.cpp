@@ -2,8 +2,7 @@
 /*
 
 Requer a biblioteca ax12.h
-Pacote (ArbotiX Sensor and Servo Library) da Trossen Robotics, disponível em:
-https://www.trossenrobotics.com/productdocs/Arbotix/Arbotix%20Sensor%20and%20Servo%20Library.pdf
+Pacote (ArbotiX Sensor and Servo Library) da Trossen Robotics
 
 Ligação(nesta praca(placa)):
 D0/D1 (RX/TX) ->  ESP32 (via divisor de tensão no sentido ArbotiX -> ESP32)
@@ -19,7 +18,7 @@ Servo AX-12A  ->  Um dos 3 conectores brancos (AX/S1 bus)
 #define VELOCIDADE 100    // Velocidade de movimento (aparentemente vai de 0-1023 tbm)
 
 void setup(){
-    Serialhttps://github.com/Dih-X/CodigoMicroPython/tree/main/Codigos_GarraDrone_Oficiais/ECG_Oficial/Poss%C3%ADvel%20Forma%20Final.begin(9600);
+    Serial.begin(9600);
     ax12Init(1000000);
 
     SetSpeed(GRIPPER_ID, VELOCIDADE);
