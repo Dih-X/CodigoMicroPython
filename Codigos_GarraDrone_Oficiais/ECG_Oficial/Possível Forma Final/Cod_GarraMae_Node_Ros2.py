@@ -16,6 +16,7 @@ class GarraBridge(Node):
             self.callback_comando,
             10
         )
+
         self.get_logger().info(f'Conectando à Pico {PORTA_SERIAL} com baudrate {BAUDRATE}, aguardando comandos em garra/comando')
 
     def callback_comando(self, msg):
